@@ -16,7 +16,7 @@ namespace codechallenge.Application.Movie
 
         private async Task GetUpComingMovies()
         {
-            var items = await this.api.GetList(new UpComingMovieModel(), 1);
+            var items = api.GetList(new UpComingMovieModel(), 1).GetAwaiter().GetResult().Results;
 
             Items.AddRange(items);
         }
@@ -47,7 +47,7 @@ namespace codechallenge.Application.Movie
                 {
                     IsBusy = true;
                     var page = Items.Count / pageSize;
-                    var items = await api.GetList(new UpComingMovieModel(), page);
+                    var items = api.GetList(new UpComingMovieModel(), page).GetAwaiter().GetResult().Results;
                     IsBusy = false;
                     return items;
                 }
