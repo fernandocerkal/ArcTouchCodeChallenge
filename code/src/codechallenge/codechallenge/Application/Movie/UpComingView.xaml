@@ -22,7 +22,7 @@
                     <ViewCell>
                         <Grid Padding="12">
                             <!--<Label Text="{Binding .}" FontSize="30" TextColor="Black" />-->
-                            <Label Text="TESTE" FontSize="30" TextColor="Black" />
+                            <Label Text="{Binding Title}" FontSize="30" TextColor="Black" />
                         </Grid>
                     </ViewCell>
                 </DataTemplate>
