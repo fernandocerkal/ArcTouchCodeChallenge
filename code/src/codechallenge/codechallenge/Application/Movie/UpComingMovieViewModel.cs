@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
+using codechallenge.Application.Genre;
 using codechallenge.Infra.API;
 using Xamarin.Forms.Extended;
 
@@ -39,7 +41,9 @@ namespace codechallenge.Application.Movie
         {
             //todo: inject dependency
 
-            this.api = new Service();
+            api = new Service();
+            //todo: refactor (this var must be declared in other file...
+            List<GenreModel> genres = api.GetList(new GenreModel(), null).GetAwaiter().GetResult().Results as List<GenreModel>;
 
             Items = new InfiniteScrollCollection<UpComingMovieModel>
             {

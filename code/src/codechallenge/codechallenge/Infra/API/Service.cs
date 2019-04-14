@@ -12,13 +12,15 @@ namespace codechallenge.Infra.API
         private const string apiHostPrefix  = @"https://api.themoviedb.org/3/";
         private const string apiKey         = "1f54bd990f1cdfb230adb312546d765d";
 
-        public async Task<ApiResult<T>> GetList<T>(T model, int page) where T : class, IBaseModel
+        public async Task<ApiResult<T>> GetList<T>(T model, Int32? page) where T : class, IBaseModel
         {
             try
             {
                 using (var client = new HttpClient())
                 {
-                    var urlRequest = $"{apiHostPrefix}{model.GetAPIListMethodPah()}?api_key={apiKey}&page={page}";
+                    var urlRequest = $"{apiHostPrefix}{model.GetAPIListMethodPah()}?api_key={apiKey}";
+
+                    if (page.HasValue) urlRequest += "&page={page}";
 
                     Console.WriteLine($"RX::{urlRequest}");
 

@@ -1,5 +1,5 @@
-﻿using System.Threading.Tasks;
-using codechallenge.Appllication.Movie;
+﻿using codechallenge.Appllication.Movie;
+using codechallenge.Infra.API;
 using Xamarin.Forms;
 
 namespace codechallenge
@@ -10,9 +10,9 @@ namespace codechallenge
         {
             InitializeComponent();
 
-            Task.Delay(2000);
+            Service api = new Service();
 
-            Navigation.PushModalAsync(new UpComingView());
+            Navigation.PushModalAsync(new UpComingView(), true);
         }
     }
 }
