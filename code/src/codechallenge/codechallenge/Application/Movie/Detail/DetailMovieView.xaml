@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pages:PopupPage 
+             xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:animationss="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             x:Class="codechallenge.Application.Movie.Detail.DetailMovieView">
+    
+    <StackLayout Margin="10"
+                 Padding="26"
+                 HorizontalOptions="Center"
+                 VerticalOptions="Center"
+                 BackgroundColor="Black" 
+                 HeightRequest="500"
+                 WidthRequest="300">
+        <Label Text="Hello Xamarin.Forms!" HorizontalOptions="Center" TextColor="White"
+                 VerticalOptions="Center"/>
+        <Label Text="Hello Xamarin.Forms!" HorizontalOptions="Center" TextColor="White"
+                 VerticalOptions="Center"/>
+        <Label Text="Hello Xamarin.Forms!" HorizontalOptions="Center" TextColor="White"
+                 VerticalOptions="Center"/>
+        <Label Text="Hello Xamarin.Forms!" HorizontalOptions="Center" TextColor="White"
+                 VerticalOptions="Center"/>
+        <Label Text="Hello Xamarin.Forms!" HorizontalOptions="Center" TextColor="White"
+                 VerticalOptions="Center"/>
+    </StackLayout>
+    
+</pages:PopupPage>

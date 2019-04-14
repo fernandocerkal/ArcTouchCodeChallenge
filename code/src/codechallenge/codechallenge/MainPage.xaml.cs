@@ -1,4 +1,4 @@
-﻿using codechallenge.Appllication.Movie;
+﻿using codechallenge.Application.UpComing;
 using codechallenge.Infra.API;
 using Xamarin.Forms;
 
@@ -11,6 +11,7 @@ namespace codechallenge
             InitializeComponent();
 
             Service api = new Service();
+
 
             Navigation.PushModalAsync(new UpComingView(), true);
         }

@@ -3,7 +3,7 @@ using codechallenge.Application.Genre;
 using codechallenge.Infra.Cache;
 using Newtonsoft.Json;
 
-namespace codechallenge.Application.Movie
+namespace codechallenge.Application.UpComing
 {
     public class UpComingMovieModel : BaseModel
     {
@@ -51,6 +51,6 @@ namespace codechallenge.Application.Movie
             return genreModels;
         }
 
-        public string GetFullVirtualPathOfImage(string imageFileName) => $"https://image.tmdb.org/t/p/w185_and_h278_bestv2/{imageFileName}";
+        public string GetFullVirtualPathOfImage => $"https://image.tmdb.org/t/p/w185_and_h278_bestv2/{PosterPath}";
     }
 }

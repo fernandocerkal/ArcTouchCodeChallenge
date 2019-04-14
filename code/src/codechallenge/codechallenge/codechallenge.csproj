@@ -13,6 +13,7 @@
     <PackageReference Include="Xamarin.Forms" Version="3.3.0.967583" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
     <PackageReference Include="Xamarin.Forms.Extended.InfiniteScrolling" Version="1.0.0-preview2" />
+    <PackageReference Include="Rg.Plugins.Popup" Version="1.1.5.188" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Application\" />
@@ -21,6 +22,8 @@
     <Folder Include="Infra\" />
     <Folder Include="Infra\Cache\" />
     <Folder Include="Infra\API\" />
+    <Folder Include="Application\Movie\UpComing\" />
+    <Folder Include="Application\Movie\Detail\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Infra\Contract\IGenreCache.cs" />

@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             xmlns:local="clr-namespace:codechallenge.Application.Movie"
+             xmlns:local="clr-namespace:codechallenge.Application.UpComing"
              xmlns:extended="clr-namespace:Xamarin.Forms.Extended;assembly=Xamarin.Forms.Extended.InfiniteScrolling"
-             x:Class="codechallenge.Appllication.Movie.UpComingView">
+             x:Class="codechallenge.Application.UpComing.UpComingView"
+             x:Name="ctxView">
     
      <ContentPage.BindingContext>
         <local:UpComingMovieViewModel />
     </ContentPage.BindingContext>
     
-    <StackLayout>
+    <StackLayout BackgroundColor="#010">
      <ListView ItemsSource="{Binding Items}" 
                   CachingStrategy="RecycleElement" 
                   HasUnevenRows="True">
@@ -20,10 +21,16 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <Grid Padding="12">
-                            <!--<Label Text="{Binding .}" FontSize="30" TextColor="Black" />-->
-                            <Label Text="{Binding Title}" FontSize="30" TextColor="Black" />
-                        </Grid>
+                            <StackLayout BackgroundColor="#010" Orientation="Vertical" >
+                                <StackLayout Orientation="Horizontal">
+                                    <Image  Source="{Binding GetFullVirtualPathOfImage}" />
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding BindingContext.DetailMovieCommand, Source={x:Reference ctxView}}" CommandParameter="{Binding .}" />
+                                        </Image.GestureRecognizers>
+                                    <Label Text="{Binding Title}" TextColor="#f35e20" FontSize="Medium" />
+                                    <Label Text="{Binding ReleaseDate}" HorizontalOptions="EndAndExpand" TextColor="Silver" />
+                                </StackLayout>
+                            </StackLayout>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
