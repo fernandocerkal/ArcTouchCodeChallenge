@@ -22,12 +22,12 @@ namespace codechallenge.Infra.API
                 {
                     var urlRequest = $"{apiHostPrefix}{model.GetAPIListMethodPah()}?api_key={apiKey}&page={page}";
 
-                    Debug.WriteLine(urlRequest);
+                    Debug.WriteLine($"RX::{urlRequest}");
 
-                    var httpResponse = await client.GetAsync(urlRequest);
-                    var response = await httpResponse?.Content.ReadAsStringAsync();
+                    var httpResponse =  client.GetAsync(new Uri(urlRequest)).GetAwaiter().GetResult();
+                    var response = httpResponse?.Content.ReadAsStringAsync().GetAwaiter().GetResult();
 
-                    Debug.WriteLine(response);
+                    Debug.WriteLine($"TX::{response}");
 
                     return JsonConvert.DeserializeObject<List<T>>(response);
                 }

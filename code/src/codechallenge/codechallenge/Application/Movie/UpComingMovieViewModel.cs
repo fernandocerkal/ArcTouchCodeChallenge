@@ -34,15 +34,12 @@ namespace codechallenge.Application.Movie
             }
         }
 
+
         public UpComingMovieViewModel()
         {
+            //todo: inject dependency
 
-
-        }
-
-        public UpComingMovieViewModel(IService api)
-        {
-            this.api = api;
+            this.api = new Service();
 
             Items = new InfiniteScrollCollection<UpComingMovieModel>
             {
@@ -54,7 +51,6 @@ namespace codechallenge.Application.Movie
                     IsBusy = false;
                     return items;
                 }
-
             };
 
             GetUpComingMovies();

@@ -1,4 +1,6 @@
-﻿using Xamarin.Forms;
+﻿using System.Threading.Tasks;
+using codechallenge.Appllication.Movie;
+using Xamarin.Forms;
 
 namespace codechallenge
 {
@@ -7,6 +9,10 @@ namespace codechallenge
         public MainPage()
         {
             InitializeComponent();
+
+            Task.Delay(2000);
+
+            Navigation.PushModalAsync(new UpComingView());
         }
     }
 }
