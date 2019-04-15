@@ -1,6 +1,7 @@
 ﻿using System;
-using codechallenge.Application.Genre;
-using codechallenge.Infra.Cache;
+using System.Collections.Generic;
+using System.Linq;
+using codechallenge.Infra.Helper;
 using Newtonsoft.Json;
 
 namespace codechallenge.Application.UpComing
@@ -42,10 +43,7 @@ namespace codechallenge.Application.UpComing
         [JsonProperty("release_date")]
         public String   ReleaseDate { get; set; } = String.Empty;
 
-        public string[] GenderList()
-        {
-            return new string[0];
-        }
+        public IEnumerable<string> Genders => GlobalData.GetInstance()?.GenreCache.List().Where(w => GenreIds.Contains(w.GenreId)).Select(s=>s.Name);
 
         public string FullVirtualPathOfImage => $"https://image.tmdb.org/t/p/w185_and_h278_bestv2/{PosterPath ?? BackDropPath}";
     }

@@ -1,37 +1,51 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             xmlns:local="clr-namespace:codechallenge.Application.UpComing"
              xmlns:extended="clr-namespace:Xamarin.Forms.Extended;assembly=Xamarin.Forms.Extended.InfiniteScrolling"
              x:Class="codechallenge.Application.UpComing.UpComingView"
              x:Name="ctxView">
     
-     <ContentPage.BindingContext>
-        <local:UpComingMovieViewModel />
-    </ContentPage.BindingContext>
-    
     <StackLayout BackgroundColor="#010">
-     <ListView ItemsSource="{Binding Items}" 
-                  CachingStrategy="RecycleElement" 
-                  HasUnevenRows="True">
+        <ListView ItemsSource="{Binding Items}" CachingStrategy="RecycleElement" HasUnevenRows="True">
             <ListView.Behaviors>
                 <extended:InfiniteScrollBehavior IsLoadingMore="{Binding IsBusy}" />
             </ListView.Behaviors>
-          
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                            <StackLayout BackgroundColor="#010" Orientation="Vertical" MinimumHeightRequest="100" >
-                                <StackLayout Orientation="Horizontal">
-                                    <Image  Source="{Binding FullVirtualPathOfImage}" />
-                                        <Image.GestureRecognizers>
-                                            <TapGestureRecognizer Command="{Binding BindingContext.DetailMovieCommand, Source={x:Reference ctxView}}" CommandParameter="{Binding .}" />
-                                        </Image.GestureRecognizers>
-                                    <Label Text="{Binding Title}" TextColor="#f35e20" FontSize="Medium" />
-                                    <Label Text="{Binding Title}" TextColor="#f35e20" FontSize="Medium" />
-                                    <Label Text="{Binding ReleaseDate}" HorizontalOptions="EndAndExpand" TextColor="Silver" />
-                                </StackLayout>
+                        <StackLayout BackgroundColor="#010" Orientation="Vertical" MinimumHeightRequest="100" >
+                            
+                            <StackLayout Orientation="Horizontal">
+                                <Image  Source="{Binding FullVirtualPathOfImage}" />
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding BindingContext.DetailMovieCommand, Source={x:Reference ctxView}}" CommandParameter="{Binding .}" />
+                                    </Image.GestureRecognizers>
+                                <Label Text="{Binding Title}" TextColor="#f35e20" FontSize="Medium" />
+                                <Label Text="{Binding ReleaseDate}" HorizontalOptions="EndAndExpand" TextColor="Silver" />
                             </StackLayout>
+                        
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding Genders}" TextColor="#f35e20" FontSize="Medium" />
+                            </StackLayout>    
+                            
+                            <!-- Genders -->
+                           <!-- <StackLayout Orientation="Horizontal">
+                                 <ListView ItemsSource="{Binding Genders}">                       
+                                    <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <ViewCell>
+                                                        
+                                                        <Label Text="-" TextColor="#f35e20" FontSize="Medium" />
+                                                        <Label Text="{Binding .}" TextColor="#f35e20" FontSize="Medium" />
+                                                        
+                                                </ViewCell>
+                                            </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>                
+                            </StackLayout>-->
+                            <!-- / Genders -->
+                            
+                        </StackLayout>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>

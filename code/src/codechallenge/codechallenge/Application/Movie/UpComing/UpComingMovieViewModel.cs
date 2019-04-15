@@ -16,16 +16,6 @@ namespace codechallenge.Application.UpComing
 {
     public class UpComingMovieViewModel : INotifyPropertyChanged 
     {
-        private bool _isBusy;
-        private const Int16 pageSize = 20;
-
-        private async Task GetUpComingMovies()
-        {
-            var items = await GetItems(1);
-
-            Items.AddRange(items);
-        }
-
         public event PropertyChangedEventHandler PropertyChanged;
         public InfiniteScrollCollection<UpComingMovieModel> Items { get; }
 
@@ -41,8 +31,6 @@ namespace codechallenge.Application.UpComing
 
         public UpComingMovieViewModel()
         {
-            LoadGenre();
-
             Items = new InfiniteScrollCollection<UpComingMovieModel>
             {
                 OnLoadMore = async () =>
@@ -56,6 +44,17 @@ namespace codechallenge.Application.UpComing
             };
 
             GetUpComingMovies();
+        }
+
+        private bool _isBusy;
+        private const Int16 pageSize = 20;
+        private async Task GetUpComingMovies()
+        {
+            await LoadGenre();
+
+            var items = await GetItems(1);
+
+            Items.AddRange(items);
         }
 
         //todo: refactor (this method must be declared in other file...
