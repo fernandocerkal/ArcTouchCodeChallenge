@@ -8,7 +8,7 @@ namespace codechallenge.Application.UpComing
     public class UpComingMovieModel : BaseModel
     {
 
-        public UpComingMovieModel() : base(@"movie/upcoming")
+        public UpComingMovieModel() : base(@"movie/upcoming", "results")
         { 
         
         }
@@ -42,13 +42,9 @@ namespace codechallenge.Application.UpComing
         [JsonProperty("release_date")]
         public String   ReleaseDate { get; set; } = String.Empty;
 
-        private GenreModel[] genreModels;
-        public GenreModel[] FilterGenreModel(ICache<GenreModel> modelCache)
+        public string[] GenderList()
         {
-            // todo: Filter Genre Model
-            if (genreModels == null) genreModels = new GenreModel[0];
-
-            return genreModels;
+            return new string[0];
         }
 
         public string FullVirtualPathOfImage => $"https://image.tmdb.org/t/p/w185_and_h278_bestv2/{PosterPath ?? BackDropPath}";

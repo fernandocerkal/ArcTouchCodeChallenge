@@ -28,6 +28,7 @@
                                             <TapGestureRecognizer Command="{Binding BindingContext.DetailMovieCommand, Source={x:Reference ctxView}}" CommandParameter="{Binding .}" />
                                         </Image.GestureRecognizers>
                                     <Label Text="{Binding Title}" TextColor="#f35e20" FontSize="Medium" />
+                                    <Label Text="{Binding Title}" TextColor="#f35e20" FontSize="Medium" />
                                     <Label Text="{Binding ReleaseDate}" HorizontalOptions="EndAndExpand" TextColor="Silver" />
                                 </StackLayout>
                             </StackLayout>

@@ -1,11 +1,8 @@
-﻿using System.Collections.Generic;
-
-namespace codechallenge.Infra.Cache
+﻿namespace codechallenge.Infra.Cache
 {
-    public interface ICache<T> where T : class, new()
+    public interface ICache<T> where T : class
     {
-        List<T> List();
-        bool Push(T item);
-        bool Remove(T item);
+        T[] List();
+        void Push(T item);
     }
 }

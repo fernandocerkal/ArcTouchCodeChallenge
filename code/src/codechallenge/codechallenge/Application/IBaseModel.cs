@@ -4,5 +4,6 @@
     {
 
         string GetAPIListMethodPah();
+        string GetArrayNameOfApiMethod();
     }
 }

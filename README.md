@@ -29,6 +29,7 @@ Log
 Cache results
 Store image
 Find movies
+Review code in Lint
 
 #TEST
 integration - todo

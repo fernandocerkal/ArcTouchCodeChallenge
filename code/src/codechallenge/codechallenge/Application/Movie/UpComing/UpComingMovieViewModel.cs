@@ -3,29 +3,25 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
-
-using codechallenge.Infra.API;
-
-using Xamarin.Forms.Extended;
-
 using System.Windows.Input;
-
+using codechallenge.Application.Genre;
 using codechallenge.Application.Movie.Detail;
-using static Rg.Plugins.Popup.Services.PopupNavigation;
+using codechallenge.Infra.API;
+using codechallenge.Infra.Helper;
 using Xamarin.Forms;
+using Xamarin.Forms.Extended;
+using static Rg.Plugins.Popup.Services.PopupNavigation;
 
 namespace codechallenge.Application.UpComing
 {
-    public class UpComingMovieViewModel : INotifyPropertyChanged //where T : class, IBaseModel 
+    public class UpComingMovieViewModel : INotifyPropertyChanged 
     {
         private bool _isBusy;
-        private IService api = null;
         private const Int16 pageSize = 20;
-
 
         private async Task GetUpComingMovies()
         {
-            var items = GetItems(1);
+            var items = await GetItems(1);
 
             Items.AddRange(items);
         }
@@ -45,11 +41,7 @@ namespace codechallenge.Application.UpComing
 
         public UpComingMovieViewModel()
         {
-            //todo: inject dependency
-            api = new Service();
-
-            //todo: refactor (this var must be declared in other file...
-            //List<GenreModel> genres = api.GetList(new GenreModel(), null).GetAwaiter().GetResult().Results as List<GenreModel>;
+            LoadGenre();
 
             Items = new InfiniteScrollCollection<UpComingMovieModel>
             {
@@ -57,7 +49,7 @@ namespace codechallenge.Application.UpComing
                 {
                     IsBusy = true;
                     var page = Items.Count / pageSize;
-                    var items = GetItems(page);
+                    var items = await GetItems(page);
                     IsBusy = false;
                     return items;
                 }
@@ -66,11 +58,19 @@ namespace codechallenge.Application.UpComing
             GetUpComingMovies();
         }
 
-        //public ICommand DetailMovieCommand => new Command<UpComingMovieModel>((upComingMovie) => PushAsync(new DetailMovieView() /*{ SelectedUpComingMovie = upComingMovie }*/));
-        public ICommand DetailMovieCommand => new Command<UpComingMovieModel>(async (upComingMovie) => await PushAsync(new DetailMovieView(upComingMovie) /*{ SelectedUpComingMovie = upComingMovie }*/, true));
+        //todo: refactor (this method must be declared in other file...
+        private async Task<IEnumerable<GenreModel>> LoadGenre()
+        {
+            var genreList = await new Service().GetList(new GenreModel());
 
+            GlobalData.GetInstance().GenreCache.AddRange(genreList);
 
-        private IEnumerable<UpComingMovieModel> GetItems(int page) => api.GetList(new UpComingMovieModel(), page).GetAwaiter().GetResult().Results;
+            return genreList;
+        }
+
+        public ICommand DetailMovieCommand => new Command<UpComingMovieModel>(async (upComingMovie) => await PushAsync(new DetailMovieView(upComingMovie), true));
+
+        private async Task<IEnumerable<UpComingMovieModel>> GetItems(int page) => await new Service().GetList(new UpComingMovieModel(), page);
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {

@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 using codechallenge.Application;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace codechallenge.Infra.API
 {
@@ -12,7 +14,7 @@ namespace codechallenge.Infra.API
         private const string apiHostPrefix  = @"https://api.themoviedb.org/3/";
         private const string apiKey         = "1f54bd990f1cdfb230adb312546d765d";
 
-        public async Task<ApiResult<T>> GetList<T>(T model, Int32? page) where T : class, IBaseModel
+        public async Task<IEnumerable<T>> GetList<T>(T model, Int32? page = null) where T : class, IBaseModel
         {
             try
             {
@@ -29,7 +31,9 @@ namespace codechallenge.Infra.API
 
                     Console.WriteLine($"TX::{response}");
 
-                    return JsonConvert.DeserializeObject<ApiResult<T>>(response);
+
+                    return JToken.Parse(response)[model.GetArrayNameOfApiMethod()].ToObject<IEnumerable<T>>();
+                    //return JsonConvert.DeserializeObject<ApiResult<T>>(response);
                 }
             }
             catch (Exception ex)

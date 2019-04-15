@@ -18,7 +18,7 @@
         
         <Label Text="{Binding SelectedUpComingMovie.Overview}" HorizontalOptions="Center" TextColor="White" VerticalOptions="Center" FontSize="Medium"/>
         
-        <Image Source="{Binding SelectedUpComingMovie.FullVirtualPathOfImage}" HeightRequest="200" WidthRequest="200" />
+        <Image Source="{Binding SelectedUpComingMovie.FullVirtualPathOfImage}" HeightRequest="200" WidthRequest="250" />
         
         <Label Text="{Binding SelectedUpComingMovie.ReleaseDate}" HorizontalOptions="Center" TextColor="White" VerticalOptions="Center" FontSize="Small"/>
         
