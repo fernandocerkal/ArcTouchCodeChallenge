@@ -67,7 +67,7 @@ namespace codechallenge.Application.UpComing
         }
 
         //public ICommand DetailMovieCommand => new Command<UpComingMovieModel>((upComingMovie) => PushAsync(new DetailMovieView() /*{ SelectedUpComingMovie = upComingMovie }*/));
-        public ICommand DetailMovieCommand => new Command<UpComingMovieModel>(async (upComingMovie) => await PushAsync(new DetailMovieView() /*{ SelectedUpComingMovie = upComingMovie }*/, true));
+        public ICommand DetailMovieCommand => new Command<UpComingMovieModel>(async (upComingMovie) => await PushAsync(new DetailMovieView(upComingMovie) /*{ SelectedUpComingMovie = upComingMovie }*/, true));
 
 
         private IEnumerable<UpComingMovieModel> GetItems(int page) => api.GetList(new UpComingMovieModel(), page).GetAwaiter().GetResult().Results;

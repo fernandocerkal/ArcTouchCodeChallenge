@@ -12,7 +12,6 @@ namespace codechallenge
 
             Service api = new Service();
 
-
             Navigation.PushModalAsync(new UpComingView(), true);
         }
     }

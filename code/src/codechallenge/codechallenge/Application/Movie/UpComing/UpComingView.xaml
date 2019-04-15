@@ -21,9 +21,9 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                            <StackLayout BackgroundColor="#010" Orientation="Vertical" >
+                            <StackLayout BackgroundColor="#010" Orientation="Vertical" MinimumHeightRequest="100" >
                                 <StackLayout Orientation="Horizontal">
-                                    <Image  Source="{Binding GetFullVirtualPathOfImage}" />
+                                    <Image  Source="{Binding FullVirtualPathOfImage}" />
                                         <Image.GestureRecognizers>
                                             <TapGestureRecognizer Command="{Binding BindingContext.DetailMovieCommand, Source={x:Reference ctxView}}" CommandParameter="{Binding .}" />
                                         </Image.GestureRecognizers>

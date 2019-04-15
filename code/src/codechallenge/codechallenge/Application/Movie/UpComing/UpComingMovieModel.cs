@@ -51,6 +51,6 @@ namespace codechallenge.Application.UpComing
             return genreModels;
         }
 
-        public string GetFullVirtualPathOfImage => $"https://image.tmdb.org/t/p/w185_and_h278_bestv2/{PosterPath}";
+        public string FullVirtualPathOfImage => $"https://image.tmdb.org/t/p/w185_and_h278_bestv2/{PosterPath ?? BackDropPath}";
     }
 }

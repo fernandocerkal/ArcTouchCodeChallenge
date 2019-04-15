@@ -13,16 +13,14 @@
                  BackgroundColor="Black" 
                  HeightRequest="500"
                  WidthRequest="300">
-        <Label Text="Hello Xamarin.Forms!" HorizontalOptions="Center" TextColor="White"
-                 VerticalOptions="Center"/>
-        <Label Text="Hello Xamarin.Forms!" HorizontalOptions="Center" TextColor="White"
-                 VerticalOptions="Center"/>
-        <Label Text="Hello Xamarin.Forms!" HorizontalOptions="Center" TextColor="White"
-                 VerticalOptions="Center"/>
-        <Label Text="Hello Xamarin.Forms!" HorizontalOptions="Center" TextColor="White"
-                 VerticalOptions="Center"/>
-        <Label Text="Hello Xamarin.Forms!" HorizontalOptions="Center" TextColor="White"
-                 VerticalOptions="Center"/>
+        
+        <Label Text="{Binding SelectedUpComingMovie.Title}" HorizontalOptions="Center" TextColor="Orange" VerticalOptions="Center" FontSize="Large" FontFamily="Verdana"/>
+        
+        <Label Text="{Binding SelectedUpComingMovie.Overview}" HorizontalOptions="Center" TextColor="White" VerticalOptions="Center" FontSize="Medium"/>
+        
+        <Image Source="{Binding SelectedUpComingMovie.FullVirtualPathOfImage}" HeightRequest="200" WidthRequest="200" />
+        
+        <Label Text="{Binding SelectedUpComingMovie.ReleaseDate}" HorizontalOptions="Center" TextColor="White" VerticalOptions="Center" FontSize="Small"/>
+        
     </StackLayout>
-    
 </pages:PopupPage>
