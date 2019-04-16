@@ -3,9 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:extended="clr-namespace:Xamarin.Forms.Extended;assembly=Xamarin.Forms.Extended.InfiniteScrolling"
              x:Class="codechallenge.Application.UpComing.UpComingView"
-             x:Name="ctxView">
+             x:Name="ctxView" BackgroundColor="Black">
     
-    <StackLayout BackgroundColor="#010">
+    <StackLayout>
         <ListView ItemsSource="{Binding Items}" CachingStrategy="RecycleElement" HasUnevenRows="True">
             <ListView.Behaviors>
                 <extended:InfiniteScrollBehavior IsLoadingMore="{Binding IsBusy}" />
@@ -13,20 +13,38 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout BackgroundColor="#010" Orientation="Vertical" MinimumHeightRequest="100" >
+                        <StackLayout BackgroundColor="#010" Orientation="Vertical" MinimumHeightRequest="150" Padding="10">
+                            <Grid>
+                              <Grid.RowDefinitions>
+                                    <RowDefinition Height="140" />
+                              </Grid.RowDefinitions>
+                              <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="20*" />
+                                    <ColumnDefinition Width="78*" />
+                                    <ColumnDefinition Width="2*" />
+                              </Grid.ColumnDefinitions>
+                              
+                                <Image Grid.Column="0" Source="{Binding FullVirtualPathOfImage}" />
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding BindingContext.DetailMovieCommand, Source={x:Reference ctxView}}" CommandParameter="{Binding .}" />
+                                </Image.GestureRecognizers>
                             
-                            <StackLayout Orientation="Horizontal">
-                                <Image  Source="{Binding FullVirtualPathOfImage}" />
-                                    <Image.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding BindingContext.DetailMovieCommand, Source={x:Reference ctxView}}" CommandParameter="{Binding .}" />
-                                    </Image.GestureRecognizers>
-                                <Label Text="{Binding Title}" TextColor="#f35e20" FontSize="Medium" />
-                                <Label Text="{Binding ReleaseDate}" HorizontalOptions="EndAndExpand" TextColor="Silver" />
-                            </StackLayout>
-                        
-                            <StackLayout Orientation="Horizontal">
-                                <Label Text="{Binding Genders}" TextColor="#f35e20" FontSize="Medium" />
-                            </StackLayout>    
+                                <Grid Grid.Column="1" HeightRequest="140">
+                                  <Grid.RowDefinitions>
+                                      <RowDefinition Height="*" />
+                                      <RowDefinition Height="*" />
+                                      <RowDefinition Height="*" />
+                                  </Grid.RowDefinitions>
+                                  <Grid.ColumnDefinitions>
+                                      <ColumnDefinition Width="*" />
+                                  </Grid.ColumnDefinitions>
+                                    
+                                      <Label Text="{Binding Title}" Grid.Row="0" TextColor="#f35e20" FontSize="Medium" FontAttributes="Bold" Margin="10,30,0,0"  />
+                                    
+                                      <Label Text="{Binding ReleaseDate}"  Grid.Row="1" TextColor="Silver" FontSize="Small" Margin="10,0,0,0"   />
+                                    
+                                      <Label Text="{Binding Genders}"  Grid.Row="2" TextColor="White" FontSize="Small"  />
+                                </Grid>
                             
                             <!-- Genders -->
                            <!-- <StackLayout Orientation="Horizontal">
@@ -44,7 +62,7 @@
                                 </ListView>                
                             </StackLayout>-->
                             <!-- / Genders -->
-                            
+                            </Grid>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
