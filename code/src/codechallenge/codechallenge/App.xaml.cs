@@ -1,6 +1,4 @@
-﻿using System;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
+﻿using Xamarin.Forms.Xaml;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace codechallenge
@@ -11,7 +9,7 @@ namespace codechallenge
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new Application.Main.MainPage();
         }
 
         protected override void OnStart()

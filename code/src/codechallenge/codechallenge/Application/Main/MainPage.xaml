@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:local="clr-namespace:codechallenge" 
+             x:Class="codechallenge.Application.Main.MainPage"
+             x:Name="ctxView">
+    <local:GradientColorStack StartColor="#FB983A" EndColor="#FF5A00">
+        <StackLayout HorizontalOptions="Center"  VerticalOptions="CenterAndExpand">
+            <Label Text="Challenge accepted." HorizontalOptions="Center" VerticalOptions="CenterAndExpand" FontSize="Large" TextColor="Black" />
+            <Label Text="Thanks for opportunity!" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" TextColor="Black" />
+            <Button Text="Start" WidthRequest="100" Margin="0,40,0,0" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Command="{Binding BindingContext.UpComingCommand, Source={x:Reference ctxView}}" FontSize="Large" TextColor="white" BorderColor="White" BorderRadius="5" BorderWidth="3"/>
+        </StackLayout>
+    </local:GradientColorStack>
+</ContentPage>

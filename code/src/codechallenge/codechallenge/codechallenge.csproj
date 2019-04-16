@@ -18,18 +18,22 @@
   <ItemGroup>
     <Folder Include="Application\" />
     <Folder Include="Application\Genre\" />
-    <Folder Include="Application\Movie\" />
     <Folder Include="Infra\" />
     <Folder Include="Infra\Cache\" />
     <Folder Include="Infra\API\" />
-    <Folder Include="Application\Movie\UpComing\" />
-    <Folder Include="Application\Movie\Detail\" />
     <Folder Include="Infra\Helper\" />
     <Folder Include="Miscellaneous\" />
+    <Folder Include="Application\Main\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Infra\Contract\IGenreCache.cs" />
     <Compile Remove="Infra\Cache\ICache.cs" />
     <Compile Remove="Application\Movie\Detail\DetailMovieModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Application\Movie\.DS_Store" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Xamarin.iOS" />
   </ItemGroup>
 </Project>
