@@ -31,19 +31,19 @@
                             
                                 <Grid Grid.Column="1" HeightRequest="140">
                                   <Grid.RowDefinitions>
-                                      <RowDefinition Height="*" />
-                                      <RowDefinition Height="*" />
-                                      <RowDefinition Height="*" />
+                                      <RowDefinition Height="30*" />
+                                      <RowDefinition Height="10*" />
+                                      <RowDefinition Height="60*" />
                                   </Grid.RowDefinitions>
                                   <Grid.ColumnDefinitions>
                                       <ColumnDefinition Width="*" />
                                   </Grid.ColumnDefinitions>
                                     
-                                      <Label Text="{Binding Title}" Grid.Row="0" TextColor="#f35e20" FontSize="Medium" FontAttributes="Bold" Margin="10,30,0,0"  />
+                                      <Label Text="{Binding Title}" Grid.Row="0" TextColor="#f35e20" FontSize="Medium" FontAttributes="Bold" Margin="10,20,0,0"  />
                                     
                                       <Label Text="{Binding ReleaseDate}"  Grid.Row="1" TextColor="Silver" FontSize="Small" Margin="10,0,0,0"   />
                                     
-                                      <Label Text="{Binding Genders}"  Grid.Row="2" TextColor="White" FontSize="Small"  />
+                                      <Label Text="{Binding Genders}"  Grid.Row="2" TextColor="White" FontSize="Small" Margin="10,10,0,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"   />
                                 </Grid>
                             
                             <!-- Genders -->

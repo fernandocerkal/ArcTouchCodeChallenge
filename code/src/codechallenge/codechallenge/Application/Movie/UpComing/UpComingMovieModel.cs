@@ -43,7 +43,9 @@ namespace codechallenge.Application.UpComing
         [JsonProperty("release_date")]
         public String   ReleaseDate { get; set; } = String.Empty;
 
-        public IEnumerable<string> Genders => GlobalData.GetInstance()?.GenreCache.List().Where(w => GenreIds.Contains(w.GenreId)).Select(s=>s.Name);
+        public IEnumerable<string> GenderList => GlobalData.GetInstance()?.GenreCache.List().Where(w => GenreIds.Contains(w.GenreId)).Select(s=>s.Name);
+
+        public string Genders => string.Join(", ", GenderList);
 
         public string FullVirtualPathOfImage => $"https://image.tmdb.org/t/p/w185_and_h278_bestv2/{PosterPath ?? BackDropPath}";
     }
