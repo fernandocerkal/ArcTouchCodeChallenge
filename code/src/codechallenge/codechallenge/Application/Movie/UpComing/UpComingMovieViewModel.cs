@@ -46,6 +46,13 @@ namespace codechallenge.Application.UpComing
             GetUpComingMovies();
         }
 
+        public ICommand DetailMovieCommand => new Command<UpComingMovieModel>(async (upComingMovie) => await PushAsync(new DetailMovieView(upComingMovie), true));
+
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
         private bool _isBusy;
         private const Int16 pageSize = 20;
         private async Task GetUpComingMovies()
@@ -67,13 +74,6 @@ namespace codechallenge.Application.UpComing
             return genreList;
         }
 
-        public ICommand DetailMovieCommand => new Command<UpComingMovieModel>(async (upComingMovie) => await PushAsync(new DetailMovieView(upComingMovie), true));
-
-        private async Task<IEnumerable<UpComingMovieModel>> GetItems(int page) => await new Service().GetList(new UpComingMovieModel(), page);
-
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+        private async Task<IEnumerable<UpComingMovieModel>> GetItems(int page) => await new Service().GetList(new UpComingMovieModel(), page);       
     }
 }
