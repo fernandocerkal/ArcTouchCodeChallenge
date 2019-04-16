@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:codechallenge" x:Class="codechallenge.MainPage">
-    <StackLayout>
-        <Label Text="TESTE" FontSize="30" TextColor="Black" />
+    <local:GradientColorStack StartColor="#FB983A" EndColor="#FF5A00">
+    <StackLayout HorizontalOptions="Center"  VerticalOptions="CenterAndExpand">
+        <Label Text="Challenge accepted." HorizontalOptions="Center" VerticalOptions="CenterAndExpand" FontSize="Large" TextColor="Black" />
+        <Label Text="Thanks for opportunity!" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" TextColor="Black" />
+        <Button Text="Start" WidthRequest="100" Margin="0,40,0,0" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Command="UpComingCommand" FontSize="Large" TextColor="white" BorderColor="White" BorderRadius="5" BorderWidth="3"/>
     </StackLayout>
+        </local:GradientColorStack>
 </ContentPage>

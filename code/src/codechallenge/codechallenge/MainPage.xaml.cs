@@ -1,4 +1,5 @@
-﻿using codechallenge.Application.UpComing;
+﻿using System.Windows.Input;
+using codechallenge.Application.UpComing;
 using Xamarin.Forms;
 
 namespace codechallenge
@@ -8,8 +9,8 @@ namespace codechallenge
         public MainPage()
         {
             InitializeComponent();
-
-            Navigation.PushModalAsync(new UpComingView(), true);
         }
+
+        public ICommand UpComingCommand => new Command(async () => await Navigation.PushModalAsync(new UpComingView(), true));
     }
 }
