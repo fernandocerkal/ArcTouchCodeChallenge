@@ -57,9 +57,7 @@
                             <Setter Property="HeightRequest" Value="0" />
                         </Trigger>
                     </Grid.Triggers>
-                    <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" 
-                                       Color="#2196F3" VerticalOptions="Center" 
-                                       HorizontalOptions="Center"/>
+                    <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" Color="#2196F3" VerticalOptions="Center" HorizontalOptions="Center"/>
                 </Grid>
             </ListView.Footer>
         </ListView>

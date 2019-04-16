@@ -18,4 +18,3 @@ namespace codechallenge.Application
         public string GetArrayNameOfApiMethod() => arayNameOfApiMethod;
     }
 }
-

@@ -17,17 +17,11 @@ namespace codechallenge
 
             CGColor endColor = stack.EndColor.ToCGColor();
 
-            #region for Vertical Gradient
-            //var gradientLayer = new CAGradientLayer();
-            #endregion
-
-            #region for Horizontal Gradient
             var gradientLayer = new CAGradientLayer()
             {
               StartPoint = new CGPoint(0, 0.5),
               EndPoint = new CGPoint(1, 0.5)
             };
-            #endregion
 
             gradientLayer.Frame = rect;
             gradientLayer.Colors = new CGColor[] { startColor, endColor };

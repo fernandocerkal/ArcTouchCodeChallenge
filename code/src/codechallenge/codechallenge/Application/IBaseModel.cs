@@ -2,7 +2,6 @@
 {
     public interface IBaseModel
     {
-
         string GetAPIListMethodPah();
         string GetArrayNameOfApiMethod();
     }

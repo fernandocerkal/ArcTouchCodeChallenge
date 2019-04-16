@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 using codechallenge.Application;
-using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace codechallenge.Infra.API
@@ -26,14 +25,12 @@ namespace codechallenge.Infra.API
 
                     Console.WriteLine($"RX::{urlRequest}");
 
-                    var httpResponse =  client.GetAsync(new Uri(urlRequest)).GetAwaiter().GetResult();
-                    var response = httpResponse?.Content.ReadAsStringAsync().GetAwaiter().GetResult();
+                    var httpResponse =  await client.GetAsync(new Uri(urlRequest));
+                    var response = await httpResponse?.Content.ReadAsStringAsync();
 
                     Console.WriteLine($"TX::{response}");
 
-
                     return JToken.Parse(response)[model.GetArrayNameOfApiMethod()].ToObject<IEnumerable<T>>();
-                    //return JsonConvert.DeserializeObject<ApiResult<T>>(response);
                 }
             }
             catch (Exception ex)
