@@ -6,21 +6,21 @@
              xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
              x:Class="codechallenge.Application.Movie.Detail.DetailMovieView">
     
-    <StackLayout Margin="10"
-                 Padding="26"
+    <StackLayout Margin="50"
+                 Padding="20"
                  HorizontalOptions="Center"
                  VerticalOptions="Center"
-                 BackgroundColor="Black" 
-                 HeightRequest="500"
-                 WidthRequest="300">
+                 BackgroundColor="Black">
         
         <Label Text="{Binding SelectedUpComingMovie.Title}" HorizontalOptions="Center" TextColor="Orange" VerticalOptions="Center" FontSize="Large" FontFamily="Verdana"/>
         
-        <Label Text="{Binding SelectedUpComingMovie.Overview}" HorizontalOptions="Center" TextColor="White" VerticalOptions="Center" FontSize="Medium"/>
+        <Label Text="{Binding SelectedUpComingMovie.Overview}" HorizontalOptions="Center" TextColor="White" VerticalOptions="Center" FontSize="Micro"/>
         
         <Image Source="{Binding SelectedUpComingMovie.FullVirtualPathOfImage}" HeightRequest="200" WidthRequest="250" />
         
         <Label Text="{Binding SelectedUpComingMovie.ReleaseDate}" HorizontalOptions="Center" TextColor="White" VerticalOptions="Center" FontSize="Small"/>
-        
+       
+        <Label Text="{Binding SelectedUpComingMovie.Genders}"  TextColor="#f35e20" FontSize="Small" Margin="10,10,0,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"   />          
+       
     </StackLayout>
 </pages:PopupPage>
