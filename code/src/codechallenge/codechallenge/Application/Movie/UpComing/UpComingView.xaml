@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:extended="clr-namespace:Xamarin.Forms.Extended;assembly=Xamarin.Forms.Extended.InfiniteScrolling"
+             x:Class="codechallenge.Application.UpComing.UpComingView"
+             x:Name="ctxView" BackgroundColor="Black">
+    <StackLayout>
+        <ListView ItemsSource="{Binding Items}" CachingStrategy="RecycleElement" HasUnevenRows="True">
+            <ListView.Behaviors>
+                <extended:InfiniteScrollBehavior IsLoadingMore="{Binding IsBusy}" />
+            </ListView.Behaviors>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                            <StackLayout BackgroundColor="#010" Orientation="Vertical" MinimumHeightRequest="150" Padding="10">
+                                <Grid>
+                                  <Grid.RowDefinitions>
+                                        <RowDefinition Height="140" />
+                                  </Grid.RowDefinitions>
+                                  <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="25*" />
+                                        <ColumnDefinition Width="75*" />
+                                  </Grid.ColumnDefinitions>
+                                  
+                                    <Image Grid.Column="0" Source="{Binding FullVirtualPathOfImage}" />
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding BindingContext.DetailMovieCommand, Source={x:Reference ctxView}}" CommandParameter="{Binding .}" />
+                                    </Image.GestureRecognizers>
+                                
+                                    <Grid Grid.Column="1" HeightRequest="140">
+                                      <Grid.RowDefinitions>
+                                          <RowDefinition Height="30*" />
+                                          <RowDefinition Height="10*" />
+                                          <RowDefinition Height="60*" />
+                                      </Grid.RowDefinitions>
+                                      <Grid.ColumnDefinitions>
+                                          <ColumnDefinition Width="*" />
+                                      </Grid.ColumnDefinitions>
+                                        
+                                          <Label Text="{Binding Title}" Grid.Row="0" TextColor="#f35e20" FontSize="Medium" FontAttributes="Bold" Margin="10,20,0,0"  />
+                                        
+                                          <Label Text="{Binding ReleaseDate}"  Grid.Row="1" TextColor="Silver" FontSize="Small" Margin="10,0,0,0"   />
+                                        
+                                          <Label Text="{Binding Genders}"  Grid.Row="2" TextColor="White" FontSize="Small" Margin="10,10,0,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"   />
+                                    </Grid>
+                                </Grid>
+                            </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+            <ListView.Footer>
+                <Grid Padding="6" IsVisible="{Binding IsBusy}">
+                    <Grid.Triggers>
+                        <Trigger TargetType="Grid" Property="IsVisible" Value="False">
+                            <Setter Property="HeightRequest" Value="0" />
+                        </Trigger>
+                    </Grid.Triggers>
+                    <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" Color="#2196F3" VerticalOptions="Center" HorizontalOptions="Center"/>
+                </Grid>
+            </ListView.Footer>
+        </ListView>
+    </StackLayout>
+</ContentPage>

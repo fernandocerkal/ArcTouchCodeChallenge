@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>pdbonly</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Forms" Version="3.3.0.967583" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
+    <PackageReference Include="Xamarin.Forms.Extended.InfiniteScrolling" Version="1.0.0-preview2" />
+    <PackageReference Include="Rg.Plugins.Popup" Version="1.1.5.188" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Application\" />
+    <Folder Include="Application\Genre\" />
+    <Folder Include="Infra\" />
+    <Folder Include="Infra\Cache\" />
+    <Folder Include="Infra\API\" />
+    <Folder Include="Infra\Helper\" />
+    <Folder Include="Miscellaneous\" />
+    <Folder Include="Application\Main\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Infra\Contract\IGenreCache.cs" />
+    <Compile Remove="Infra\Cache\ICache.cs" />
+    <Compile Remove="Application\Movie\Detail\DetailMovieModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Application\Movie\.DS_Store" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Xamarin.iOS" />
+  </ItemGroup>
+</Project>
