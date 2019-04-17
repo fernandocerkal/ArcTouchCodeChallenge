@@ -9,7 +9,7 @@ namespace codechallenge.Infra.API
 {
     public class Service : IService
     {
-        //todo: set in configuration
+        //todo: set in configuration - technical debt
         private const string apiHostPrefix  = @"https://api.themoviedb.org/3/";
         private const string apiKey         = "1f54bd990f1cdfb230adb312546d765d";
 

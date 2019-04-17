@@ -4,7 +4,6 @@
              xmlns:extended="clr-namespace:Xamarin.Forms.Extended;assembly=Xamarin.Forms.Extended.InfiniteScrolling"
              x:Class="codechallenge.Application.UpComing.UpComingView"
              x:Name="ctxView" BackgroundColor="Black">
-    
     <StackLayout>
         <ListView ItemsSource="{Binding Items}" CachingStrategy="RecycleElement" HasUnevenRows="True">
             <ListView.Behaviors>

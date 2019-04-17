@@ -8,7 +8,6 @@ namespace codechallenge.Application.UpComing
 {
     public class UpComingMovieModel : BaseModel
     {
-
         public UpComingMovieModel() : base(@"movie/upcoming", "results")
         { 
         

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -32,7 +31,6 @@ namespace codechallenge.Application.UpComing
 
         public UpComingMovieViewModel()
         {
-
             Items = new InfiniteScrollCollection<UpComingMovieModel>
             {
                 OnLoadMore = async () =>
@@ -55,7 +53,7 @@ namespace codechallenge.Application.UpComing
         }
 
         private bool _isBusy;
-        private int currentPage = 0;
+        private int currentPage;
         private const Int16 pageSize = 20;
         private async Task GetUpComingMovies()
         {
@@ -66,7 +64,7 @@ namespace codechallenge.Application.UpComing
                 Items.AddRange(items);
         }
 
-        //todo: refactor (this method must be declared in other file...
+        //todo: refactor (this method must be declared in other file...) - technical debt
         private async Task<IEnumerable<GenreModel>> LoadGenre()
         {
             var genreList = await new Service().GetList(new GenreModel());
