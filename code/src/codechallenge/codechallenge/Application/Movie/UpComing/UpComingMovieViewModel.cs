@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -31,13 +32,13 @@ namespace codechallenge.Application.UpComing
 
         public UpComingMovieViewModel()
         {
+
             Items = new InfiniteScrollCollection<UpComingMovieModel>
             {
                 OnLoadMore = async () =>
                 {
                     IsBusy = true;
-                    var page = Items.Count / pageSize;
-                    var items = await GetItems(page);
+                    var items = await GetItems(++currentPage);
                     IsBusy = false;
                     return items;
                 }
@@ -54,14 +55,15 @@ namespace codechallenge.Application.UpComing
         }
 
         private bool _isBusy;
+        private int currentPage = 0;
         private const Int16 pageSize = 20;
         private async Task GetUpComingMovies()
         {
             await LoadGenre();
 
-            var items = await GetItems(1);
-
-            Items.AddRange(items);
+            var items = await GetItems(++currentPage);
+            if (items != null)
+                Items.AddRange(items);
         }
 
         //todo: refactor (this method must be declared in other file...
@@ -74,6 +76,6 @@ namespace codechallenge.Application.UpComing
             return genreList;
         }
 
-        private async Task<IEnumerable<UpComingMovieModel>> GetItems(int page) => await new Service().GetList(new UpComingMovieModel(), page);       
+        private async Task<IEnumerable<UpComingMovieModel>> GetItems(int page) => await new Service().GetList(new UpComingMovieModel(), page).ConfigureAwait(false);       
     }
 }

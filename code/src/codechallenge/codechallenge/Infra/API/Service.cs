@@ -21,7 +21,7 @@ namespace codechallenge.Infra.API
                 {
                     var urlRequest = $"{apiHostPrefix}{model.GetAPIListMethodPah()}?api_key={apiKey}";
 
-                    if (page.HasValue) urlRequest += "&page={page}";
+                    if (page.HasValue) urlRequest += $"&page={page}";
 
                     Console.WriteLine($"RX::{urlRequest}");
 
